@@ -9,6 +9,7 @@
     ./modules/vpn.nix
     ./modules/nvidia.nix
     ./modules/desktop.nix
+    ./modules/ssh.nix
   ];
 
   # Bootloader — UEFI / systemd-boot.
