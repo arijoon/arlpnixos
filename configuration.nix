@@ -19,6 +19,18 @@
   networking.hostName = "arlp";
   networking.networkmanager.enable = true;
 
+  # DNS: prefer Cloudflare (1.1.1.1 primary, 1.0.0.1 secondary). insertNameservers
+  # prepends these to whatever DHCP hands out, so they're the main resolvers but
+  # DHCP DNS still works as a fallback.
+  # To force ONLY these (ignore DHCP DNS entirely — can break captive portals /
+  # corporate split-DNS), instead use:
+  #   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  #   networking.networkmanager.dns = "none";
+  networking.networkmanager.insertNameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
+
   # Locale / time — adjust to taste.
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
