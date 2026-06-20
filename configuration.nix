@@ -10,6 +10,9 @@
     ./modules/nvidia.nix
     ./modules/desktop.nix
     ./modules/ssh.nix
+    ./modules/openrgb.nix
+    ./modules/tuxedo.nix
+    ./modules/rhino-cache.nix
   ];
 
   # Bootloader — UEFI / systemd-boot.
