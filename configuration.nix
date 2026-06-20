@@ -19,6 +19,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Intel Wi-Fi 6E AX211: on ~every other cold boot the WiFi PCIe function
+  # (0000:00:14.3) enumerates on the bus but `iwlwifi` never binds to it — the
+  # journal shows the PCI device but zero iwlwifi lines, while Bluetooth (the
+  # other half of the same CNVi module) comes up fine. A reboot "fixes" it.
+  # Root cause is a PCIe Active-State Power Management race that leaves the
+  # WiFi function in a bad link/power state during early probe. Disabling ASPM
+  # removes the race. (Minor cost: slightly higher idle power draw.)
+  boot.kernelParams = [ "pcie_aspm=off" ];
+
   networking.hostName = "arlp";
   networking.networkmanager.enable = true;
 
