@@ -13,6 +13,7 @@
     ./modules/openrgb.nix
     ./modules/tuxedo.nix
     ./modules/rhino-cache.nix
+    ./modules/prediction-sports.nix
   ];
 
   # Bootloader — UEFI / systemd-boot.
